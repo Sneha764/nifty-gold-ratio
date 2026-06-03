@@ -2,8 +2,9 @@ import streamlit as st
 import yfinance as yf
 import pandas as pd
 import plotly.graph_objects as go
+from datetime import datetime
 
-st.title("NIFTYBEES vs GOLDBEES Strategy")
+st.title("NIFTY vs Gold Ratio Signal")
 
 if st.button("Run Signal"):
 
@@ -33,7 +34,7 @@ if st.button("Run Signal"):
     st.write("MA50:", round(float(latest["MA50"]), 3))
     st.write("MA200:", round(float(latest["MA200"]), 3))
 
-    st.success(signal)
+    st.markdown(f"## 🚦 {signal}")
 
     # =====================
     # Plotly Chart
@@ -81,3 +82,23 @@ if st.button("Run Signal"):
     )
 
     st.plotly_chart(fig, use_container_width=True)
+
+    st.markdown("---")
+
+    st.markdown(
+        """
+        👩‍💻 **Developed by Sneha Yadav**
+
+        📈 NIFTYBEES vs GOLDBEES Ratio Strategy  
+        📊 50-Day / 200-Day Moving Average Signal
+
+        🔗 GitHub: [nifty-gold-ratio](https://github.com/Sneha764/nifty-gold-ratio)  
+        📡 Data Source: Yahoo Finance
+
+        ⚠️ For educational purposes only. Not financial advice.
+        """
+    )
+
+    st.caption(
+         f"Market data date: {df.index[-1].date()} | Generated: {datetime.now().strftime('%d %b %Y %H:%M:%S')}"
+    )
