@@ -3,6 +3,7 @@ import yfinance as yf
 import pandas as pd
 import plotly.graph_objects as go
 from datetime import datetime
+from zoneinfo import ZoneInfo
 
 st.title("NIFTY vs Gold Ratio Signal")
 
@@ -98,7 +99,7 @@ if st.button("Run Signal"):
         ⚠️ For educational purposes only. Not financial advice.
         """
     )
-
+    ist_time = datetime.now(ZoneInfo("Asia/Kolkata"))
     st.caption(
-         f"Market data date: {df.index[-1].date()} | Generated: {datetime.now().strftime('%d %b %Y %H:%M:%S')}"
+        f"Market data date: {df.index[-1].date()} | Generated: {ist_time.strftime('%d %b %Y %I:%M:%S %p IST')}"
     )
