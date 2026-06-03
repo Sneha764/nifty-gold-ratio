@@ -1,6 +1,7 @@
 import streamlit as st
 import yfinance as yf
 import pandas as pd
+import plotly.graph_objects as go
 
 st.title("NIFTYBEES vs GOLDBEES Strategy")
 
@@ -33,3 +34,50 @@ if st.button("Run Signal"):
     st.write("MA200:", round(float(latest["MA200"]), 3))
 
     st.success(signal)
+
+    # =====================
+    # Plotly Chart
+    # =====================
+
+    st.subheader("5-Year Ratio Trend")
+
+    fig = go.Figure()
+    fig.add_trace(
+        go.Scatter(
+            x=df.index,
+            y=df["Ratio"],
+            mode="lines",
+            name="Ratio",
+            line=dict(color="#FF8C00", width=2)
+        )
+    )
+
+    fig.add_trace(
+        go.Scatter(
+            x=df.index,
+            y=df["MA50"],
+            mode="lines",
+            name="MA50",
+            line=dict(color="lightskyblue", width=2)
+        )
+    )
+
+    fig.add_trace(
+        go.Scatter(
+            x=df.index,
+            y=df["MA200"],
+            mode="lines",
+            name="MA200",
+            line=dict(color="darkblue", width=2)
+        )
+    )
+
+    fig.update_layout(
+        title="NBES / GBES Ratio with MA50 and MA200",
+        xaxis_title="Date",
+        yaxis_title="Ratio",
+        hovermode="x unified",
+        height=600
+    )
+
+    st.plotly_chart(fig, use_container_width=True)
