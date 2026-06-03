@@ -88,18 +88,39 @@ if st.button("Run Signal"):
 
     st.markdown(
         """
-        👩‍💻 **Developed by Sneha Yadav**
+        <div style="text-align: center;">
 
-        📈 NIFTYBEES vs GOLDBEES Ratio Strategy  
+        <h4>👩‍💻 Developed by Sneha Yadav</h4>
+
+        <p>
+        📈 NIFTYBEES vs GOLDBEES Ratio Strategy<br>
         📊 50-Day / 200-Day Moving Average Signal
+        </p>
 
-        🔗 GitHub: [nifty-gold-ratio](https://github.com/Sneha764/nifty-gold-ratio)  
+        <p>
+        🔗 <a href="https://github.com/Sneha764/nifty-gold-ratio" target="_blank">
+        GitHub Repository
+        </a><br>
         📡 Data Source: Yahoo Finance
+        </p>
 
+        <p>
         ⚠️ For educational purposes only. Not financial advice.
-        """
+        </p>
+
+        </div>
+        """,
+        unsafe_allow_html=True
     )
+
     ist_time = datetime.now(ZoneInfo("Asia/Kolkata"))
-    st.caption(
-        f"Market data date: {df.index[-1].date()} | Generated: {ist_time.strftime('%d %b %Y %I:%M:%S %p IST')}"
+
+    st.markdown(
+        f"""
+        <div style="text-align: center; color: gray;">
+        Market data date: {df.index[-1].date()} |
+        Generated: {ist_time.strftime('%d %b %Y %I:%M:%S %p IST')}
+        </div>
+        """,
+        unsafe_allow_html=True
     )
